@@ -36,6 +36,8 @@ class SessionTask(models.Model):
                                 related_name="session_tasks_message")
 
     state = models.CharField(max_length=32, default=SessionTaskStates.enable, verbose_name="Состояние")
+    state_description = models.CharField(max_length=64, null=True, verbose_name="Описание")
+
     type = models.CharField(max_length=32, default=SessionTaskType.non_type, verbose_name="Тип")
 
     def __str__(self):

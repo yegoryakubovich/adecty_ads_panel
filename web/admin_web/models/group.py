@@ -26,8 +26,8 @@ class Group(models.Model):
     can_message_short = models.BooleanField(default=True, verbose_name="Отправка короткого текста")
 
     captcha_have = models.BooleanField(default=False, verbose_name="Капча")
-    captcha_type = models.CharField(max_length=128, verbose_name="Тип капчи")
-    captcha_data = models.CharField(max_length=128, verbose_name="Информация по капче")
+    captcha_type = models.CharField(max_length=128, blank=True, verbose_name="Тип капчи")
+    captcha_data = models.CharField(max_length=128, blank=True, verbose_name="Информация по капче")
 
     def __str__(self):
         return f"{self.id} - {self.name}  ({self.state})"

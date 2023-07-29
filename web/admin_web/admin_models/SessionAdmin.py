@@ -8,7 +8,10 @@ from admin_web.models import Session, Message, Sleep, SleepStates
 
 @admin.register(Session, site=admin_site)
 class SessionAdmin(admin.ModelAdmin):
-    list_display = ("id", "phone", "country", "shop", "tg_user_id", "state", "created", "message_send_now", "sleep_now")
+    list_display = (
+        "id", "phone", "username", "first_name", "last_name", "country", "shop", "tg_user_id", "state", "created",
+        "message_send_now", "sleep_now"
+    )
     list_filter = ("state",)
     readonly_fields = ("id", "phone", "tg_user_id", "created")
 
@@ -28,4 +31,4 @@ class SessionAdmin(admin.ModelAdmin):
         if sleep:
             delta = (sleep.created + timedelta(seconds=sleep.time_second)).replace(tzinfo=None) - datetime.utcnow()
             return f"{delta}"
-        return f"0"
+        return f"Нет"

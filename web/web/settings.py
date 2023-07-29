@@ -16,11 +16,13 @@ SECRET_KEY = 'django-insecure-n+*62!z*a5l$a6&!hooi0@b5$i-n0#i@fbrfcjtuk3!2ebu63r
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '185.237.15.203']
 
 # Application definition
 INSTALLED_APPS = [
     'admin_web',
+    "admin_interface",
+    "colorfield",
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

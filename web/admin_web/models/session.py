@@ -28,7 +28,11 @@ class Session(models.Model):
     string = models.CharField(max_length=512, verbose_name="String session")
     api_id = models.BigIntegerField(verbose_name="API ID")
     api_hash = models.CharField(max_length=256, verbose_name="API HASH")
+
     tg_user_id = models.BigIntegerField(verbose_name="Телеграм ID")
+    username = models.CharField(max_length=128, null=True)
+    first_name = models.CharField(max_length=128, null=True)
+    last_name = models.CharField(max_length=128, null=True)
 
     state = models.CharField(max_length=64, default=SessionStates.waiting, verbose_name="Состояние")
     state_description = models.CharField(max_length=2056, null=True, verbose_name="Описание состояния")
