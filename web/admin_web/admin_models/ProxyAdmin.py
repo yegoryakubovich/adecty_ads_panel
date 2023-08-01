@@ -9,6 +9,7 @@ class ProxyAdmin(admin.ModelAdmin):
     list_display = ("id", "country", "ip_port", "user", "password", "type", "state", "created", "session_count")
     list_filter = ("state", "type")
     readonly_fields = ("id", "created")
+    list_per_page = 1000
 
     # search_fields = ()
     # list_editable = ()

@@ -6,6 +6,8 @@ class OrderStates:
     disable = "finished"
     stopped = "stopped"
 
+    choices = ((waiting, waiting), (disable, disable), (stopped, stopped))
+
 
 class Order(models.Model):
     class Meta:
@@ -22,7 +24,8 @@ class Order(models.Model):
     message_short = models.CharField(max_length=256, verbose_name="Сообщение короткое")
     image_link = models.CharField(max_length=256, verbose_name="Ссылка на картинку")
 
-    state = models.CharField(max_length=32, default=OrderStates.waiting, verbose_name="Состояние")
+    state = models.CharField(max_length=32, default=OrderStates.waiting, choices=OrderStates.choices,
+                             verbose_name="Состояние")
     datetime_stop = models.DateTimeField()
 
     def __str__(self):

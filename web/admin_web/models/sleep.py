@@ -1,11 +1,13 @@
 from django.db import models
 
-from admin_web.models import Country, Shop, Session
+from admin_web.models import Session
 
 
 class SleepStates:
     enable = 'enable'
     disable = 'disable'
+
+    choices = ((enable, enable), (disable, disable))
 
 
 class Sleep(models.Model):
@@ -21,7 +23,8 @@ class Sleep(models.Model):
                                 related_name="sleep_session")
 
     time_second = models.IntegerField(verbose_name="Время (сек)")
-    state = models.CharField(max_length=32, default=SleepStates.enable, verbose_name="Состояние")
+    state = models.CharField(max_length=32, default=SleepStates.enable, choices=SleepStates.choices,
+                             verbose_name="Состояние")
 
     def __str__(self):
         return f"{self.id} - {self.time_second}с. ({self.state})"

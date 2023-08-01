@@ -9,6 +9,7 @@ class SessionTaskAdmin(admin.ModelAdmin):
     list_display = ("id", "session", "group", "order", "message", "state", "state_description", "type", "created")
     list_filter = ("state", "type", "state_description", "created")
     readonly_fields = ("id", "created")
+    list_per_page = 1000
 
     # search_fields = ()
     # list_editable = ()

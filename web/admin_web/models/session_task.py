@@ -10,11 +10,18 @@ class SessionTaskType:
     send_by_order = 'send_by_order'
     check_message = 'check_message'
 
+    choices = (
+        (non_type, non_type), (check_group, check_group), (join_group, join_group),
+        (send_by_order, send_by_order), (check_message, check_message),
+    )
+
 
 class SessionTaskStates:
     enable = 'enable'
     finished = 'finished'
     abortively = 'abortively'
+
+    choices = ((enable, enable), (finished, finished), (abortively, abortively))
 
 
 class SessionTask(models.Model):
@@ -35,10 +42,12 @@ class SessionTask(models.Model):
     message = models.ForeignKey(Message, on_delete=models.CASCADE, null=True, verbose_name="Сообщение",
                                 related_name="session_tasks_message")
 
-    state = models.CharField(max_length=32, default=SessionTaskStates.enable, verbose_name="Состояние")
+    state = models.CharField(max_length=32, default=SessionTaskStates.enable, choices=SessionTaskStates.choices,
+                             verbose_name="Состояние")
     state_description = models.CharField(max_length=64, null=True, verbose_name="Описание")
 
-    type = models.CharField(max_length=32, default=SessionTaskType.non_type, verbose_name="Тип")
+    type = models.CharField(max_length=32, default=SessionTaskType.non_type, choices=SessionTaskType.choices,
+                            verbose_name="Тип")
 
     def __str__(self):
         return f"{self.id} ({self.state})"

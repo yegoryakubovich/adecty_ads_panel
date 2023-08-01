@@ -8,6 +8,7 @@ from admin_web.models import SessionProxy
 class SessionProxyAdmin(admin.ModelAdmin):
     list_display = ("id", "session", "proxy", "created")
     readonly_fields = ("id", "created")
+    list_per_page = 1000
 
     # search_fields = ()
     # list_editable = ()

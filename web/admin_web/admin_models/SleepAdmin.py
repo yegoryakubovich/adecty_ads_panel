@@ -9,8 +9,9 @@ from admin_web.models import Sleep, SleepStates
 @admin.register(Sleep, site=admin_site)
 class SleepAdmin(admin.ModelAdmin):
     list_display = ("id", "session", "time_second", "state", "created", "sleep_now")
-    list_filter = ("state",)
+    list_filter = ("state", "created")
     readonly_fields = ("id", "created")
+    list_per_page = 1000
 
     # search_fields = ()
     # list_editable = ()

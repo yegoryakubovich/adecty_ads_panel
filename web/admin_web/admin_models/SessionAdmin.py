@@ -10,10 +10,11 @@ from admin_web.models import Session, Message, Sleep, SleepStates
 class SessionAdmin(admin.ModelAdmin):
     list_display = (
         "id", "phone", "username", "first_name", "last_name", "country", "shop", "tg_user_id", "state", "created",
-        "message_send_now", "sleep_now"
+        "message_send_now", "sleep_now", "work"
     )
-    list_filter = ("state",)
+    list_filter = ("state", "work")
     readonly_fields = ("id", "phone", "tg_user_id", "created")
+    list_per_page = 1000
 
     # search_fields = ()
     # list_editable = ()

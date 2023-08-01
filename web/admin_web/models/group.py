@@ -6,6 +6,8 @@ class GroupStates:
     active = 'active'
     inactive = 'inactive'
 
+    choices = ((waiting, waiting), (active, active), (inactive, inactive))
+
 
 class Group(models.Model):
     class Meta:
@@ -17,7 +19,8 @@ class Group(models.Model):
     created = models.DateTimeField(default=False, verbose_name="Время создания")
 
     name = models.CharField(max_length=128, verbose_name="Название")
-    state = models.CharField(max_length=32, default=GroupStates.waiting, verbose_name="Состояние")
+    state = models.CharField(max_length=32, default=GroupStates.waiting, choices=GroupStates.choices,
+                             verbose_name="Состояние")
     subscribers = models.IntegerField(verbose_name="Подписчиков")  # Количество подписчиков
 
     can_image = models.BooleanField(default=True, verbose_name="Отправка картинки")

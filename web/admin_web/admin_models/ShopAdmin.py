@@ -8,6 +8,7 @@ from admin_web.models import Shop, Session, Proxy
 class ShopAdmin(admin.ModelAdmin):
     list_display = ("id", "name", "link", "created", "session_count", "proxy_count")
     readonly_fields = ("id", "created")
+    list_per_page = 1000
 
     # search_fields = ()
     # list_editable = ()

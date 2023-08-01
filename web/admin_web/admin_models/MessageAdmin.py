@@ -9,6 +9,7 @@ class MessageAdmin(admin.ModelAdmin):
     list_display = ("id", "session", "order", "group", "state", "message_id", "text", "created")
     list_filter = ("state", "created")
     readonly_fields = ("id", "created")
+    list_per_page = 1000
 
     # search_fields = ()
     # list_editable = ()

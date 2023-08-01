@@ -11,6 +11,10 @@ class SessionStates:
     banned = "banned"
     spam_block = "spam_block"
 
+    choices = (
+        (waiting, waiting), (check, check), (free, free), (in_work, in_work), (banned, banned), (spam_block, spam_block)
+    )
+
 
 class Session(models.Model):
     class Meta:
@@ -34,8 +38,11 @@ class Session(models.Model):
     first_name = models.CharField(max_length=128, null=True)
     last_name = models.CharField(max_length=128, null=True)
 
-    state = models.CharField(max_length=64, default=SessionStates.waiting, verbose_name="Состояние")
+    state = models.CharField(max_length=64, default=SessionStates.waiting, choices=SessionStates.choices,
+                             verbose_name="Состояние")
     state_description = models.CharField(max_length=2056, null=True, verbose_name="Описание состояния")
+    work = models.BooleanField(default=False, verbose_name="Запущен")
+
     messages_send = models.IntegerField(verbose_name="Сообщений отправлено")
 
     def __str__(self):
